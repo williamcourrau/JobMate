@@ -21,7 +21,7 @@ const cards = [
   }
 ];
 
-export function JobContent() {
+export function HomeContent() {
   return (
     <div className="flex-grow-1 p-4 bg-light" style={{ borderTopLeftRadius: '20px' }}>
       <div className="d-flex justify-content-between align-items-center mb-4">

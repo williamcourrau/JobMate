@@ -3,19 +3,16 @@ import { FaTachometerAlt, FaClipboardList, FaRegClock, FaChartBar, FaFileAlt, Fa
 import { Logocard } from './LogoCard';
 import { Nav, Button } from 'react-bootstrap';
 
-export function Sidebar({ activeView, onViewChange }) {
+export function Sidebar({ activeView, setActiveView }) {
   // Navigation options with corresponding views
   const navOptions = [
-    { key: 'Home', icon: <FaTachometerAlt />, label: 'Home', view: 'dashboard' },
-    { key: 'My Applications', icon: <FaRegClock />, label: 'My Applications', view: 'applications' },
-    { key: 'Saved Jobs', icon: <FaFileAlt />, label: 'Saved Jobs', view: 'saved' },
-    { key: 'Job Content', icon: <FaClipboardList />, label: 'Job Content', view: 'jobs' }, // Added this to access your JobContent
+    { key: 'Home', icon: <FaTachometerAlt />, label: 'Home', view: 'HomeContent' },
+    { key: 'Myapplications', icon: <FaRegClock />, label: 'My Applications', view: 'applications' },
+    { key: 'Savedjobs', icon: <FaFileAlt />, label: 'Saved Jobs', view: 'saved' },
   ];
 
   // Handle navigation click
-  const handleNavClick = (option) => {
-    onViewChange(option.view); // Use the view property to set the active view
-  };
+  const handleNavClick = (option) => setActiveView(option.view); // Use the view property to set the active view
 
   return (
     <aside>
@@ -35,8 +32,7 @@ export function Sidebar({ activeView, onViewChange }) {
                 ${activeView === opt.view ? 'bg-dark text-white px-3 py-2' : 'bg-transparent text-dark p-0'}
                 ${idx === 0 ? 'mb-2' : ''}
                 transition-all
-              `}
-            >
+              `}>
               {React.cloneElement(opt.icon, {
                 color: activeView === opt.view ? '#FFC107' : '#A3A3A3',
                 fontSize: 20,
