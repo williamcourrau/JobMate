@@ -15,11 +15,11 @@ export const Dashboard = () => {
     const ActiveComponent = contentComponents[activeView] || JobContent;
 
     return (
-        <div className="dashboard-container">
+        <div className="d-flex">
             <Sidebar activeView={activeView} onViewChange={setActiveView} />
-            <main className="content-area">
-                <ActiveComponent />
-            </main>
+                <div className="flex-grow-1 p-3">
+                    <ActiveComponent />
+                </div>
         </div>
     );
 

@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar.jsx';
-import { JobContent } from '../../components/JobContent.jsx';
+import { HomeContent } from '../../components/HomeContent.jsx';
+import { JobApplicationsTable } from '../../components/JobApplicationsTable.jsx';
 
-const HomeContent = () => (
+const MainHomeContent = () => (
   <div className="flex-grow-1 p-4 bg-light" style={{ borderTopLeftRadius: '20px' }}>
-      {<JobContent></JobContent>}
+      {<HomeContent></HomeContent>}
   </div>
 );
 
 const MyApplicationsContent = () => (
 <div className="flex-grow-1 p-4 bg-light" style={{ borderTopLeftRadius: '20px' }}>
     <div className="px-4">
-      <h1>My Applications</h1>
-      <p>Track all your job applications and their current status.</p>
-      {/* Add your applications content here */}
+      {<JobApplicationsTable></JobApplicationsTable>}
     </div>
   </div>
 );
@@ -36,15 +35,15 @@ export const TaskManagement = () => {
   
   const [activeView, setActiveView] = useState<ViewType>('home');
 
+  console.log('Active View:', activeView);
+  
   const contentComponents: Record<ViewType, React.ComponentType> = {
-    home: HomeContent,
+    home: MainHomeContent,
     applications: MyApplicationsContent,
     saved: SavedJobsContent,
   };
 
-  console.log('Active View:', activeView);
-
-  const ActiveContent = contentComponents[activeView] || MyApplicationsContent;
+  const ActiveContent = contentComponents[activeView] || MainHomeContent;
 
   return (
     <div className="d-flex flex-column h-100">
