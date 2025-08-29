@@ -4,6 +4,7 @@ import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar.jsx';
 import { HomeContent } from '../../components/HomeContent.jsx';
 import { JobApplicationsTable } from '../../components/JobApplicationsTable.jsx';
+import {SavedJobsList} from "../../components/SavedJobsList.jsx";
 
 const MainHomeContent = () => (
   <div className="flex-grow-1 p-4 bg-light" style={{ borderTopLeftRadius: '20px' }}>
@@ -24,7 +25,7 @@ const SavedJobsContent = () => (
     <div className="px-4">
       <h1>Saved Jobs</h1>
       <p>View all the jobs you've saved for later review.</p>
-      {/* Add your saved jobs content here */}
+      {<SavedJobsList></SavedJobsList>}
     </div>
   </div>
 );

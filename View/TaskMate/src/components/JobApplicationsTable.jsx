@@ -29,53 +29,57 @@ import Divider from '@mui/material/Divider';
 import Avatar from '@mui/material/Avatar';
 
 export function JobApplicationsTable() {
+  // Función utilitaria para obtener el logo desde el nombre de la empresa
+  const getCompanyLogo = (company) => {
+    if (!company) return '';
+    const domain = company.toLowerCase().replace(/\s+/g, '') + '.com';
+    return `https://logo.clearbit.com/${domain}`;
+  };
+
+  // Estado con datos de ejemplo
   const [applications, setApplications] = useState([
-    { 
-      id: 1, 
-      title: 'Frontend Developer', 
-      company: 'ABC Corp', 
-      logo: 'https://via.placeholder.com/40x40.png?text=A', 
+    {
+      id: 1,
+      title: 'Frontend Developer',
+      company: 'ABC Corp',
       date: '2025-08-10',
       description: 'React.js developer position with focus on modern web applications',
       link: 'https://example.com/job/frontend-dev',
       status: 'applied',
-      lastUpdate: '2025-08-15'
+      lastUpdate: '2025-08-15',
     },
-    { 
-      id: 2, 
-      title: 'Backend Engineer', 
-      company: 'XYZ Inc', 
-      logo: 'https://via.placeholder.com/40x40.png?text=X',
+    {
+      id: 2,
+      title: 'Backend Engineer',
+      company: 'XYZ Inc',
       date: '2025-08-12',
       description: 'Node.js and Python backend development role',
       link: 'https://example.com/job/backend-eng',
       status: 'interviewing',
-      lastUpdate: '2025-08-20'
+      lastUpdate: '2025-08-20',
     },
   ]);
 
-  // View modal
+  // Estados para los modales de vista, alta y edición
   const [selectedApplication, setSelectedApplication] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Add modal
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [newApp, setNewApp] = useState({
     title: '',
     company: '',
-    logo: '',
     description: '',
     link: '',
     date: '',
     status: 'applied',
   });
 
-  // Edit modal
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [editApp, setEditApp] = useState(null);
 
+  // Manejo de acciones básicas
   const handleDeleteApplication = (id) => {
-    setApplications(applications.filter(app => app.id !== id));
+    setApplications(applications.filter((app) => app.id !== id));
   };
 
   const handleViewApplication = (application) => {
@@ -87,14 +91,16 @@ export function JobApplicationsTable() {
     setIsModalOpen(false);
     setSelectedApplication(null);
   };
-  
+
   const handleStatusChange = (id, newStatus) => {
-    setApplications(applications.map(app => 
-      app.id === id ? { ...app, status: newStatus, lastUpdate: new Date().toISOString().split('T')[0] } : app
-    ));
+    setApplications(
+      applications.map((app) =>
+        app.id === id ? { ...app, status: newStatus, lastUpdate: new Date().toISOString().split('T')[0] } : app
+      )
+    );
   };
 
-  // Add flow
+  // Flujos de alta
   const handleAddOpen = () => setIsAddOpen(true);
   const handleAddClose = () => setIsAddOpen(false);
 
@@ -106,10 +112,17 @@ export function JobApplicationsTable() {
     };
     setApplications([...applications, newApplication]);
     setIsAddOpen(false);
-    setNewApp({ title: '', company: '', logo: '', description: '', link: '', date: '', status: 'applied' });
+    setNewApp({
+      title: '',
+      company: '',
+      description: '',
+      link: '',
+      date: '',
+      status: 'applied',
+    });
   };
 
-  // Edit flow
+  // Flujos de edición
   const handleEditApplication = (app) => {
     setEditApp({ ...app });
     setIsEditOpen(true);
@@ -121,28 +134,39 @@ export function JobApplicationsTable() {
   };
 
   const handleEditSubmit = () => {
-    setApplications(applications.map(app => 
-      app.id === editApp.id ? { ...editApp, lastUpdate: new Date().toISOString().split('T')[0] } : app
-    ));
+    setApplications(
+      applications.map((app) =>
+        app.id === editApp.id ? { ...editApp, lastUpdate: new Date().toISOString().split('T')[0] } : app
+      )
+    );
     setIsEditOpen(false);
     setEditApp(null);
   };
 
+  // Gestión del color y etiqueta del estado
   const getStatusColor = (status) => {
     switch (status) {
-      case 'applied': return 'primary';
-      case 'interviewing': return 'warning';
-      case 'offer': return 'success';
-      default: return 'default';
+      case 'applied':
+        return 'primary';
+      case 'interviewing':
+        return 'warning';
+      case 'offer':
+        return 'success';
+      default:
+        return 'default';
     }
   };
 
   const getStatusLabel = (status) => {
     switch (status) {
-      case 'applied': return 'Applied';
-      case 'interviewing': return 'Interviewing';
-      case 'offer': return 'Offer';
-      default: return 'Unknown';
+      case 'applied':
+        return 'Applied';
+      case 'interviewing':
+        return 'Interviewing';
+      case 'offer':
+        return 'Offer';
+      default:
+        return 'Unknown';
     }
   };
 
@@ -154,7 +178,8 @@ export function JobApplicationsTable() {
           Add Application
         </Button>
       </div>
-      
+
+      {/* Tabla de aplicaciones */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 1000 }} aria-label="job applications table">
           <TableHead>
@@ -171,33 +196,39 @@ export function JobApplicationsTable() {
           </TableHead>
           <TableBody>
             {applications.map((application) => (
-              <TableRow key={application.id}>
-                <TableCell>{application.title}</TableCell>
+              <TableRow key={application.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <TableCell component="th" scope="row">
+                  {application.title}
+                </TableCell>
                 <TableCell>
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Avatar src={application.logo} alt={application.company} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Avatar
+                      src={getCompanyLogo(application.company)}
+                      alt={application.company}
+                      sx={{ width: 40, height: 40 }}
+                    />
                     {application.company}
-                  </Box>
+                  </div>
                 </TableCell>
                 <TableCell sx={{ maxWidth: 200 }}>
                   <Tooltip title={application.description || 'No description'}>
                     <span>
-                      {application.description 
-                        ? application.description.length > 50 
-                            ? `${application.description.substring(0, 50)}...`
-                            : application.description
-                        : 'No description'
-                      }
+                      {application.description
+                        ? application.description.length > 50
+                          ? `${application.description.substring(0, 50)}...`
+                          : application.description
+                        : 'No description'}
                     </span>
                   </Tooltip>
                 </TableCell>
                 <TableCell>
                   {application.link ? (
                     <Tooltip title="Open job posting">
-                      <IconButton 
-                        size="small" 
+                      <IconButton
+                        size="small"
                         color="primary"
                         onClick={() => window.open(application.link, '_blank')}
+                        aria-label="open job link"
                       >
                         <LinkIcon />
                       </IconButton>
@@ -213,14 +244,15 @@ export function JobApplicationsTable() {
                       <Select
                         value={application.status}
                         onChange={(e) => handleStatusChange(application.id, e.target.value)}
+                        displayEmpty
                       >
                         <MenuItem value="applied">Applied</MenuItem>
                         <MenuItem value="interviewing">Interviewing</MenuItem>
                         <MenuItem value="offer">Offer</MenuItem>
                       </Select>
                     </FormControl>
-                    <Chip 
-                      label={getStatusLabel(application.status)} 
+                    <Chip
+                      label={getStatusLabel(application.status)}
                       color={getStatusColor(application.status)}
                       size="small"
                     />
@@ -228,13 +260,21 @@ export function JobApplicationsTable() {
                 </TableCell>
                 <TableCell>{new Date(application.lastUpdate).toLocaleDateString()}</TableCell>
                 <TableCell align="right">
-                  <IconButton color="info" onClick={() => handleViewApplication(application)}>
+                  <IconButton color="info" onClick={() => handleViewApplication(application)} aria-label="view">
                     <VisibilityIcon />
                   </IconButton>
-                  <IconButton color="primary" onClick={() => handleEditApplication(application)}>
+                  <IconButton
+                    color="primary"
+                    onClick={() => handleEditApplication(application)}
+                    aria-label="edit"
+                  >
                     <EditIcon />
                   </IconButton>
-                  <IconButton color="error" onClick={() => handleDeleteApplication(application.id)}>
+                  <IconButton
+                    color="error"
+                    onClick={() => handleDeleteApplication(application.id)}
+                    aria-label="delete"
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
@@ -244,29 +284,29 @@ export function JobApplicationsTable() {
         </Table>
       </TableContainer>
 
-      {/* ✅ View Modal */}
+      {/* Modal de vista */}
       <Dialog open={isModalOpen} onClose={handleCloseModal} fullWidth maxWidth="sm">
         {selectedApplication && (
           <>
-            <DialogTitle>
-              <Box display="flex" alignItems="center" gap={2}>
-                <Avatar src={selectedApplication.logo} alt={selectedApplication.company} />
+            <DialogTitle>{selectedApplication.title}</DialogTitle>
+            <DialogContent dividers>
+              <Box display="flex" alignItems="center" mb={2} gap={2}>
+                <Avatar
+                  src={getCompanyLogo(selectedApplication.company)}
+                  alt={selectedApplication.company}
+                  sx={{ width: 40, height: 40 }}
+                />
                 <div>
-                  <Typography variant="h6">{selectedApplication.title}</Typography>
-                  <Typography variant="subtitle2" color="text.secondary">
+                  <Typography variant="subtitle1" gutterBottom>
                     {selectedApplication.company}
+                  </Typography>
+                  <Typography variant="body2">
+                    Applied on: {new Date(selectedApplication.date).toLocaleDateString()}
                   </Typography>
                 </div>
               </Box>
-            </DialogTitle>
-            <DialogContent dividers>
-              <Typography variant="body2" gutterBottom>
-                Applied on: {new Date(selectedApplication.date).toLocaleDateString()}
-              </Typography>
               <Divider sx={{ my: 2 }} />
-              <Typography variant="body1">
-                {selectedApplication.description}
-              </Typography>
+              <Typography variant="body1">{selectedApplication.description}</Typography>
               {selectedApplication.link && (
                 <Box mt={2}>
                   <Button
@@ -281,25 +321,60 @@ export function JobApplicationsTable() {
               )}
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleCloseModal}>Close</Button>
+              <Button onClick={handleCloseModal} color="primary">
+                Close
+              </Button>
             </DialogActions>
           </>
         )}
       </Dialog>
 
-      {/* ✅ Add Modal */}
+      {/* Modal de alta */}
       <Dialog open={isAddOpen} onClose={handleAddClose} fullWidth maxWidth="sm">
         <DialogTitle>Add New Application</DialogTitle>
         <DialogContent dividers>
           <Box display="flex" flexDirection="column" gap={2}>
-            <TextField label="Job Title" value={newApp.title} onChange={(e) => setNewApp({ ...newApp, title: e.target.value })} />
-            <TextField label="Company" value={newApp.company} onChange={(e) => setNewApp({ ...newApp, company: e.target.value })} />
-            <TextField label="Logo URL" value={newApp.logo} onChange={(e) => setNewApp({ ...newApp, logo: e.target.value })} />
-            <TextField label="Description" value={newApp.description} onChange={(e) => setNewApp({ ...newApp, description: e.target.value })} multiline rows={3} />
-            <TextField label="Job Link" value={newApp.link} onChange={(e) => setNewApp({ ...newApp, link: e.target.value })} />
-            <TextField type="date" label="Application Date" InputLabelProps={{ shrink: true }} value={newApp.date} onChange={(e) => setNewApp({ ...newApp, date: e.target.value })} />
-            <FormControl>
-              <Select value={newApp.status} onChange={(e) => setNewApp({ ...newApp, status: e.target.value })}>
+            <TextField
+              label="Job Title"
+              value={newApp.title}
+              onChange={(e) => setNewApp({ ...newApp, title: e.target.value })}
+              fullWidth
+              required
+            />
+            <TextField
+              label="Company"
+              value={newApp.company}
+              onChange={(e) => setNewApp({ ...newApp, company: e.target.value })}
+              fullWidth
+              required
+            />
+            <TextField
+              label="Description"
+              value={newApp.description}
+              onChange={(e) => setNewApp({ ...newApp, description: e.target.value })}
+              multiline
+              rows={3}
+              fullWidth
+            />
+            <TextField
+              label="Job Link"
+              value={newApp.link}
+              onChange={(e) => setNewApp({ ...newApp, link: e.target.value })}
+              fullWidth
+            />
+            <TextField
+              label="Application Date"
+              type="date"
+              value={newApp.date}
+              onChange={(e) => setNewApp({ ...newApp, date: e.target.value })}
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+            />
+            <FormControl fullWidth>
+              <Select
+                value={newApp.status}
+                onChange={(e) => setNewApp({ ...newApp, status: e.target.value })}
+              >
                 <MenuItem value="applied">Applied</MenuItem>
                 <MenuItem value="interviewing">Interviewing</MenuItem>
                 <MenuItem value="offer">Offer</MenuItem>
@@ -309,35 +384,80 @@ export function JobApplicationsTable() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleAddClose}>Cancel</Button>
-          <Button onClick={handleAddSubmit} variant="contained">Add</Button>
+          <Button onClick={handleAddSubmit} variant="contained" color="primary">
+            Add
+          </Button>
         </DialogActions>
       </Dialog>
 
-      {/* ✅ Edit Modal */}
+      {/* Edit Modal */}
       <Dialog open={isEditOpen} onClose={handleEditClose} fullWidth maxWidth="sm">
         <DialogTitle>Edit Application</DialogTitle>
-        {editApp && (
-          <DialogContent dividers>
+        <DialogContent dividers>
+          {editApp && (
             <Box display="flex" flexDirection="column" gap={2}>
-              <TextField label="Job Title" value={editApp.title} onChange={(e) => setEditApp({ ...editApp, title: e.target.value })} />
-              <TextField label="Company" value={editApp.company} onChange={(e) => setEditApp({ ...editApp, company: e.target.value })} />
-              <TextField label="Logo URL" value={editApp.logo} onChange={(e) => setEditApp({ ...editApp, logo: e.target.value })} />
-              <TextField label="Description" value={editApp.description} onChange={(e) => setEditApp({ ...editApp, description: e.target.value })} multiline rows={3} />
-              <TextField label="Job Link" value={editApp.link} onChange={(e) => setEditApp({ ...editApp, link: e.target.value })} />
-              <TextField type="date" label="Application Date" InputLabelProps={{ shrink: true }} value={editApp.date} onChange={(e) => setEditApp({ ...editApp, date: e.target.value })} />
-              <FormControl>
-                <Select value={editApp.status} onChange={(e) => setEditApp({ ...editApp, status: e.target.value })}>
+              <TextField
+                label="Job Title"
+                value={editApp.title}
+                onChange={(e) => setEditApp({ ...editApp, title: e.target.value })}
+                fullWidth
+                required
+              />
+              <TextField
+                label="Company"
+                value={editApp.company}
+                onChange={(e) => setEditApp({ ...editApp, company: e.target.value })}
+                fullWidth
+                required
+              />
+              <TextField
+                label="Description"
+                value={editApp.description}
+                onChange={(e) => setEditApp({ ...editApp, description: e.target.value })}
+                multiline
+                rows={3}
+                fullWidth
+              />
+              <TextField
+                label="Job Link"
+                value={editApp.link}
+                onChange={(e) => setEditApp({ ...editApp, link: e.target.value })}
+                fullWidth
+              />
+              <TextField
+                label="Application Date"
+                type="date"
+                value={editApp.date}
+                onChange={(e) => setEditApp({ ...editApp, date: e.target.value })}
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+              />
+              <TextField
+                label="Last Update"
+                type="date"
+                value={editApp.lastUpdate}
+                onChange={(e) => setEditApp({ ...editApp, lastUpdate: e.target.value })}
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+              />
+              <FormControl fullWidth>
+                <Select
+                  value={editApp.status}
+                  onChange={(e) => setEditApp({ ...editApp, status: e.target.value })}
+                >
                   <MenuItem value="applied">Applied</MenuItem>
                   <MenuItem value="interviewing">Interviewing</MenuItem>
                   <MenuItem value="offer">Offer</MenuItem>
                 </Select>
               </FormControl>
             </Box>
-          </DialogContent>
-        )}
+          )}
+        </DialogContent>
         <DialogActions>
           <Button onClick={handleEditClose}>Cancel</Button>
-          <Button onClick={handleEditSubmit} variant="contained">Save</Button>
+          <Button onClick={handleEditSubmit} variant="contained" color="primary">
+            Save
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
