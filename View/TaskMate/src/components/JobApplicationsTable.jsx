@@ -37,28 +37,14 @@ export function JobApplicationsTable() {
   };
 
   // Estado con datos de ejemplo
-  const [applications, setApplications] = useState([
-    {
-      id: 1,
-      title: 'Frontend Developer',
-      company: 'ABC Corp',
-      date: '2025-08-10',
-      description: 'React.js developer position with focus on modern web applications',
-      link: 'https://example.com/job/frontend-dev',
-      status: 'applied',
-      lastUpdate: '2025-08-15',
-    },
-    {
-      id: 2,
-      title: 'Backend Engineer',
-      company: 'XYZ Inc',
-      date: '2025-08-12',
-      description: 'Node.js and Python backend development role',
-      link: 'https://example.com/job/backend-eng',
-      status: 'interviewing',
-      lastUpdate: '2025-08-20',
-    },
-  ]);
+  const [applications, setApplications] = useState([]);
+
+  useState(() => {
+    fetch("http://localhost:8080/api/jobs")
+    .then(response => response.json())
+    .then(data => setApplications(data))
+    .catch(error => console.error("Error fetching applications:", error));
+  }, []);
 
   // Estados para los modales de vista, alta y edición
   const [selectedApplication, setSelectedApplication] = useState(null);

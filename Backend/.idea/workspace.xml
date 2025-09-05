@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dbbd61f4-32b4-4ccd-941a-2a189258b91d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/config/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/controller/JobController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/model/Job.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/model/JobState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/model/JobTitle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/model/PostgresSecret.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/repository/JobRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/repository/JobStateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/repository/JobTitleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/src/main/java/com/jobmate/jobs/service/JobService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/jobmate/users/config/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/jobmate/users/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/jobmate/users/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/jobmate/users/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/jobmate/users/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../View/TaskMate/src/declarations.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../View/TaskMate/src/components/JobApplicationsTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../View/TaskMate/src/components/JobApplicationsTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../View/TaskMate/src/components/SavedJobsList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../View/TaskMate/src/components/SavedJobsList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../View/TaskMate/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/../View/TaskMate/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/TaskMateApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/component/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/config/SecretsManagerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/controller/BoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/controller/TaskController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/AuthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/BoardResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/CreateBoardRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/CreateTaskDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/RegisterRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/TaskDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/dto/UpdateTaskRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/model/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/model/Priority.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/model/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/model/TaskStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/repository/BoardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/repository/TaskRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/BoardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/JwtService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/TaskService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/impl/BoardServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/impl/CustomUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/impl/JwtServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/impl/TaskServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/com/taskMate/TaskMate/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/test/java/com/taskMate/TaskMate/TaskMateApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;williamcourrau&quot;
+  }
+}</component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="development" />
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/williamcourrau/JobMate.git&quot;,
+    &quot;accountId&quot;: &quot;3aa90628-233b-4a86-9f51-70379b0336f3&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="322RXLiVAuYVi2FbbGh3UssoYuv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Dev/jobs/deploys3",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Jose/source/repos/JobMate/Backend/pom.xml.txt",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Backend" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dbbd61f4-32b4-4ccd-941a-2a189258b91d" name="Changes" comment="" />
+      <created>1756616718394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756616718394</updated>
+    </task>
+    <servers />
+  </component>
+</project>
