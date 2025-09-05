@@ -15,29 +15,14 @@ const getCompanyLogo = (company) => {
   return `https://logo.clearbit.com/${domain}`;
 };
 
-export function SavedJobsList() {
-  const [savedJobs, setSavedJobs] = useState([
-    {
-      id: 1,
-      position: 'Senior Frontend Developer',
-      company: 'Microsoft',
-      location: 'San Francisco, CA',
-      salary: '$120k - $150k',
-      postedDate: '2d ago',
-      description: '',
-      link: 'https://careers.microsoft.com/jobs/1'
-    },
-    {
-      id: 2,
-      position: 'Full Stack Engineer',
-      company: 'Google',
-      location: 'Remote',
-      salary: '$100k - $130k',
-      postedDate: '3d ago',
-      description: '',
-      link: 'https://careers.google.com/jobs/2'
-    }
-  ]);
+export function JobsList() {
+  const [savedJobs, setSavedJobs] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8080/api/jobs")
+    .then(response => response.json())
+    .then(data => setSavedJobs(data))
+    .catch(error => console.error("Error fetching jobs:", error));
+  }, []);
 }
 
   // Handler para añadir un nuevo empleo (podrías adaptarlo a un formulario o modal)

@@ -26,6 +26,7 @@
   "include": [
     "src",
     "src/**/*.jsx",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "src/declarations.d.ts"
   ]
 }
